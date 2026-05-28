@@ -25,7 +25,18 @@
       --soft: #71717a;
       --accent: #6366f1;
       --accent2: #8b5cf6;
+      --dot: #27272a;
       --mono: 'JetBrains Mono', monospace;
+    }
+    [data-theme="light"] {
+      --bg: #f8f8f8;
+      --surface: #ffffff;
+      --border: #e4e4e7;
+      --text: #18181b;
+      --mid: #52525b;
+      --soft: #71717a;
+      --dot: #d4d4d8;
+      --name-start: #18181b;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,7 +47,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.7;
-      background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+      background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
       background-size: 28px 28px;
     }
 
@@ -60,6 +71,13 @@
     }
     .nav-back:hover { color: var(--text); text-decoration: none; }
     .nav-title { font-size: 13.5px; color: var(--soft); font-family: var(--mono); }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      color: var(--soft); cursor: pointer; padding: 0.3rem 0.45rem;
+      display: flex; align-items: center; transition: color .2s, border-color .2s;
+      line-height: 0;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--soft); }
 
     .page { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
 
@@ -67,7 +85,7 @@
     .cv-name {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 600; letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2));
+      background: linear-gradient(135deg, var(--name-start, #fff) 30%, var(--accent) 70%, var(--accent2));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       margin-bottom: 0.3rem;
     }
@@ -129,6 +147,12 @@
     .pub-row:first-child { border-top: 1px solid var(--border); }
     .pub-title-text { font-size: 0.9rem; color: var(--text); font-weight: 500; margin-bottom: 0.25rem; }
     .pub-meta { font-size: 12px; color: var(--soft); }
+    .pub-first {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #34d399;
+      border: 1px solid rgba(52,211,153,.25); border-radius: 4px;
+      padding: 0.15rem 0.5rem; white-space: nowrap;
+    }
 
     .lang-row {
       display: flex; align-items: center; justify-content: space-between;
@@ -163,6 +187,9 @@
       Back
     </a>
     <span class="nav-title">CV</span>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <svg id="theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+    </button>
   </div>
 </nav>
 
@@ -375,12 +402,13 @@
     <h2 class="cv-section-title">Publications &amp; Conferences</h2>
     <div>
       <div class="pub-row">
-        <div class="pub-title-text">
+        <div class="pub-title-text" style="display:flex;align-items:baseline;gap:0.5rem;flex-wrap:wrap;">
           <a href="https://www.researchgate.net/publication/324703840_Use_of_Combined_Railway_Inspection_Data_Sources_for_Characterization_of_Rolling_Contact_Fatigue" target="_blank" rel="noopener">
             Use of Combined Railway Inspection Data Sources for Characterization of Rolling Contact Fatigue ↗
           </a>
+          <span class="pub-first">First author</span>
         </div>
-        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 12th European Conference on Non-Destructive Testing (ECNDT) &nbsp;·&nbsp; Gothenburg, Jun 2018 &nbsp;·&nbsp; First author</div>
+        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 12th European Conference on Non-Destructive Testing (ECNDT) &nbsp;·&nbsp; Gothenburg, Jun 2018</div>
       </div>
       <div class="pub-row">
         <div class="pub-title-text">
@@ -394,5 +422,27 @@
   </section>
 
 </div>
+<script>
+  const MOON = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const CRESCENT = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    icon.innerHTML = t === 'dark' ? MOON : CRESCENT;
+    localStorage.setItem('theme', t);
+  }
+
+  const saved = localStorage.getItem('theme');
+  const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme(saved || sys);
+
+  btn.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
 </body>
 </html>

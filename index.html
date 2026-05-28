@@ -45,9 +45,22 @@
       --accent:   #6366f1;
       --accent2:  #8b5cf6;
       --glow:     rgba(99,102,241,.18);
+      --dot:      #27272a;
       --mono:     "SFMono-Regular","Menlo","Consolas",monospace;
       --max:      780px;
     }
+    [data-theme="light"] {
+      --bg:           #f8f8f8;
+      --surface:      #ffffff;
+      --border:       #e4e4e7;
+      --text:         #18181b;
+      --mid:          #52525b;
+      --soft:         #71717a;
+      --glow:         rgba(99,102,241,.12);
+      --dot:          #d4d4d8;
+      --name-start:   #18181b;
+    }
+
 
     html { scroll-behavior: smooth; }
 
@@ -58,7 +71,7 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       /* subtle dot grid */
-      background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+      background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
       background-size: 28px 28px;
     }
 
@@ -91,9 +104,16 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .nav-links { display: flex; gap: 2rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
     .nav-links a { font-size: 13px; color: var(--soft); transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      color: var(--soft); cursor: pointer; padding: 0.3rem 0.45rem;
+      display: flex; align-items: center; transition: color .2s, border-color .2s;
+      line-height: 0;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--soft); }
 
     /* ── LAYOUT ──────────────────────────────────────── */
     .wrap { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
@@ -131,7 +151,7 @@
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700; line-height: 1.05; letter-spacing: -0.03em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2));
+      background: linear-gradient(135deg, var(--name-start, #fff) 30%, var(--accent) 70%, var(--accent2));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -329,9 +349,11 @@
     <a href="#about">About</a>
     <a href="#skills" class="hide-mobile">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#certifications" class="hide-mobile">Certifications</a>
     <a href="#connect">Contact</a>
     <a href="cv.html" style="color:var(--accent);font-weight:500;">CV ↗</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <svg id="theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+    </button>
   </div>
 </nav>
 
@@ -497,89 +519,6 @@
 </section>
 <hr class="rule" />
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="wrap fade">
-    <h2 class="section-label">Publications</h2>
-    <div>
-      <div class="pub-item">
-        <div class="pub-title">
-          <a href="https://www.researchgate.net/publication/324703840_Use_of_Combined_Railway_Inspection_Data_Sources_for_Characterization_of_Rolling_Contact_Fatigue" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
-            Use of Combined Railway Inspection Data Sources for Characterization of Rolling Contact Fatigue ↗
-          </a>
-          <span class="pub-first">First author</span>
-        </div>
-        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 12th European Conference on Non-Destructive Testing (ECNDT) &nbsp;·&nbsp; Gothenburg, Jun 2018</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">
-          <a href="https://www.researchgate.net/publication/301647279_Combination_of_Ultrasonic_and_Eddy_Current_Testing_with_Imaging_for_Characterization_of_Rolling_Contact_Fatigue" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
-            Combination of Ultrasonic and Eddy Current Testing with Imaging for Characterization of Rolling Contact Fatigue ↗
-          </a>
-        </div>
-        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 19th World Conference on Non-Destructive Testing (WCNDT) &nbsp;·&nbsp; Munich, Jun 2016</div>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="rule" />
-
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="wrap fade">
-    <h2 class="section-label">Certifications</h2>
-    <div>
-      <div class="cert-item">
-        <div class="cert-body">
-          <div class="cert-title">AWS Certified Cloud Practitioner</div>
-          <div class="cert-meta">Amazon Web Services &nbsp;·&nbsp; Feb 2026</div>
-        </div>
-        <a class="cert-badge" href="https://www.credly.com/badges/a331b09e-16bd-471c-bede-47b0d6db68cb/public_url" target="_blank" rel="noopener">Verify ↗</a>
-      </div>
-      <div class="cert-item">
-        <div class="cert-body">
-          <div class="cert-title">AWS re/Start Graduate</div>
-          <div class="cert-meta">Amazon Web Services &nbsp;·&nbsp; Jul 2025</div>
-        </div>
-        <a class="cert-badge" href="https://www.credly.com/badges/1e57e6d6-acea-4c1f-8875-74ba634becdd/public_url" target="_blank" rel="noopener">Verify ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="rule" />
-
-<!-- LANGUAGES -->
-<section id="languages">
-  <div class="wrap fade">
-    <h2 class="section-label">Languages</h2>
-    <div class="lang-list">
-      <div class="lang-item">
-        <div class="lang-flag-wrap">EN</div>
-        <div class="lang-body">
-          <div class="lang-name">English</div>
-          <div class="lang-cert">Cambridge BEC Higher</div>
-        </div>
-        <span class="lang-level-tag proficient">C2 · Proficient</span>
-      </div>
-      <div class="lang-item">
-        <div class="lang-flag-wrap">DE</div>
-        <div class="lang-body">
-          <div class="lang-name">German</div>
-        </div>
-        <span class="lang-level-tag advanced">C1 · Advanced</span>
-      </div>
-      <div class="lang-item">
-        <div class="lang-flag-wrap">ZH</div>
-        <div class="lang-body">
-          <div class="lang-name">Chinese (Mandarin)</div>
-        </div>
-        <span class="lang-level-tag native">Native</span>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="rule" />
-
 <!-- CONNECT -->
 <section id="connect">
   <div class="wrap fade">
@@ -633,6 +572,27 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  const MOON = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const CRESCENT = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    icon.innerHTML = t === 'dark' ? MOON : CRESCENT;
+    localStorage.setItem('theme', t);
+  }
+
+  const saved = localStorage.getItem('theme');
+  const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme(saved || sys);
+
+  btn.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
 </script>
 
 </body>
