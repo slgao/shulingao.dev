@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Shulin Gao</title>
+  <meta name="description" content="Curriculum Vitae of Shulin Gao — AI & Data Engineer, Berlin." />
+  <link rel="canonical" href="https://shulingao.is-a.dev/cv" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --border: #27272a;
+      --text: #fafafa;
+      --mid: #a1a1aa;
+      --soft: #71717a;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9,9,11,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+    }
+    .nav-inner {
+      max-width: 780px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 0.4rem;
+      color: var(--mid); font-size: 13.5px; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-title { font-size: 13.5px; color: var(--soft); font-family: var(--mono); }
+
+    /* LAYOUT */
+    .page { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    /* HEADER */
+    .cv-header { margin-bottom: 2.8rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .cv-name {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 0.3rem;
+    }
+    .cv-title { font-size: 1rem; color: var(--mid); margin-bottom: 1.2rem; }
+    .cv-contacts {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem;
+      font-size: 13px; font-family: var(--mono); color: var(--soft);
+    }
+    .cv-contacts a { color: var(--soft); }
+    .cv-contacts a:hover { color: var(--accent); text-decoration: none; }
+
+    /* SECTIONS */
+    .cv-section { margin-bottom: 2.6rem; }
+    .cv-section-title {
+      font-size: 11px; font-family: var(--mono); letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* SUMMARY */
+    .cv-summary { color: var(--mid); font-size: 14px; line-height: 1.75; }
+
+    /* TIMELINE ENTRIES */
+    .cv-entry { display: grid; grid-template-columns: 140px 1fr; gap: 0 1.4rem; margin-bottom: 1.6rem; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-date { font-size: 12px; font-family: var(--mono); color: var(--soft); padding-top: 0.1rem; line-height: 1.5; }
+    .cv-body {}
+    .cv-role { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .cv-org { font-size: 13px; color: var(--accent); margin-bottom: 0.3rem; }
+    .cv-org a { color: var(--accent); }
+    .cv-desc { font-size: 13.5px; color: var(--mid); line-height: 1.7; }
+    .cv-desc ul { margin-top: 0.5rem; padding-left: 1.2rem; }
+    .cv-desc li { margin-bottom: 0.3rem; }
+    .cv-desc strong { color: var(--text); font-weight: 500; }
+
+    /* SKILLS GRID */
+    .skills-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+    .skill-row { display: grid; grid-template-columns: 160px 1fr; gap: 0 1rem; font-size: 13.5px; }
+    .skill-label { color: var(--soft); font-family: var(--mono); font-size: 12px; padding-top: 2px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .skill-tag {
+      font-size: 11.5px; font-family: var(--mono);
+      background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.2);
+      color: var(--mid); border-radius: 4px; padding: 0.15rem 0.5rem;
+    }
+
+    /* CERT ITEMS */
+    .cert-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+    }
+    .cert-row:first-child { border-top: 1px solid var(--border); }
+    .cert-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .cert-issuer { font-size: 12px; color: var(--soft); margin-top: 0.1rem; }
+    .cert-link {
+      font-size: 11px; font-family: var(--mono); color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 4px;
+      padding: 0.2rem 0.55rem; white-space: nowrap; transition: background .2s;
+    }
+    .cert-link:hover { background: rgba(99,102,241,.12); text-decoration: none; }
+
+    /* PUB ITEMS */
+    .pub-row { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    .pub-row:first-child { border-top: 1px solid var(--border); }
+    .pub-title-text { font-size: 0.9rem; color: var(--text); font-weight: 500; margin-bottom: 0.25rem; }
+    .pub-meta { font-size: 12px; color: var(--soft); }
+
+    /* LANGUAGES */
+    .lang-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 0; border-bottom: 1px solid var(--border); gap: 1rem;
+    }
+    .lang-row:first-child { border-top: 1px solid var(--border); }
+    .lang-name-text { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .lang-cert-text { font-size: 12px; color: var(--soft); margin-top: 0.1rem; }
+    .lang-badge {
+      font-size: 11px; font-family: var(--mono); border-radius: 4px;
+      padding: 0.2rem 0.55rem; white-space: nowrap; font-weight: 500;
+    }
+    .lang-c2 { background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.3); color: #34d399; }
+    .lang-c1 { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.3); color: var(--accent); }
+    .lang-native { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); color: #f59e0b; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .cv-entry { grid-template-columns: 1fr; gap: 0.15rem; }
+      .cv-date { font-size: 11px; }
+      .skill-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+    <span class="nav-title">cv.html</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="cv-name">Shulin Gao</div>
+    <div class="cv-title">AI &amp; Data Engineer · Berlin, Germany</div>
+    <div class="cv-contacts">
+      <a href="mailto:svenslgao@gmail.com">svenslgao@gmail.com</a>
+      <a href="https://linkedin.com/in/shulin-gao" target="_blank" rel="noopener">linkedin.com/in/shulin-gao</a>
+      <a href="https://github.com/slgao" target="_blank" rel="noopener">github.com/slgao</a>
+      <span>Berlin, Germany</span>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section class="cv-section">
+    <div class="cv-section-title">Summary</div>
+    <p class="cv-summary">Senior Data &amp; Platform Engineer with 10+ years building and operating containerised data pipelines and ML infrastructure under production SLAs — from real-time multi-sensor ingestion and heterogeneous database backends to cloud-native AWS platforms provisioned with Terraform IaC. Strong AI/ML background covering the full stack from raw sensor data to deployed inference services. Seeking roles where data architecture, containerisation, and pipeline reliability are central.</p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="cv-section">
+    <div class="cv-section-title">Experience</div>
+
+    <div class="cv-entry">
+      <div class="cv-date">2026 – present</div>
+      <div class="cv-body">
+        <div class="cv-role">Personal Project — <a href="https://slgao.github.io/iHunter/" target="_blank" rel="noopener">AI-Powered Lead Generation Platform</a></div>
+        <div class="cv-org"><a href="https://github.com/slgao/iHunter" target="_blank" rel="noopener">github.com/slgao/iHunter</a> · Berlin</div>
+        <div class="cv-desc">B2B/B2C lead generation platform with FastAPI backend, async SQLite persistence, REST API integrations, and GitHub Actions CI/CD. Multi-agent LLM orchestration using Groq / LLaMA 3.</div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">2025 – present</div>
+      <div class="cv-body">
+        <div class="cv-role">Personal Project — <a href="https://slgao.github.io/landlord_system/" target="_blank" rel="noopener">Property Management Web App</a></div>
+        <div class="cv-org"><a href="https://github.com/slgao/landlord_system" target="_blank" rel="noopener">github.com/slgao/landlord_system</a> · Berlin</div>
+        <div class="cv-desc">Containerised web application for rental contract and utility billing management for the German market.
+          <ul>
+            <li>Built with Python and Streamlit; <strong>PostgreSQL on Docker</strong> for persistence; Docker Compose for local development.</li>
+            <li>Auto-generates legally relevant documents; CI/CD deployment via GitHub Actions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">05/2024 – 03/2026</div>
+      <div class="cv-body">
+        <div class="cv-role">Career Sabbatical</div>
+        <div class="cv-org">Berlin / China</div>
+        <div class="cv-desc">Technical upskilling — AWS certification via neuefische bootcamp, focus on cloud architecture and Infrastructure-as-Code. Independent software projects.</div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">11/2014 – 04/2024</div>
+      <div class="cv-body">
+        <div class="cv-role">AI &amp; Platform Engineer</div>
+        <div class="cv-org">Eurailscout Inspection &amp; Analysis B.V. (Netherlands) · Berlin</div>
+        <div class="cv-desc">Built and operated containerised data and ML platforms for safety-critical railway inspection (customers: ProRail, Strukton Rail).
+          <ul>
+            <li>Led a containerised <strong>near-real-time</strong> image processing platform: Docker + Jenkins CI/CD + RabbitMQ messaging; TensorRT/CUDA inference achieving <strong>&gt;90% accuracy</strong> at national-operator scale.</li>
+            <li>Built a complete ML platform with training pipeline, experiment tracking (MLflow), production REST API, and deployment automation — full ownership from raw data to service rollout (Flask, MS SQL Server, Docker, Jenkins).</li>
+            <li>Designed a <strong>multi-sensor data acquisition and fusion framework</strong> for heterogeneous streams (ultrasonic, camera, measurement): Python/C++17/Cython backend with REST API and polyglot data layer (MongoDB, MS SQL Server, RabbitMQ).</li>
+            <li>Developed a deep learning inference pipeline on ultrasonic sensor data: annotation management via Azure ML Studio; YOLOv5, scikit-learn.</li>
+            <li>Low-level tooling: Python/Cython raw-video decoder with C++ bindings and OpenCV; C++ LabVIEW plugin for real-time geometry computation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">11/2013 – 06/2014</div>
+      <div class="cv-body">
+        <div class="cv-role">Master Thesis — Computer Vision</div>
+        <div class="cv-org">Scopis Medical GmbH · Berlin</div>
+        <div class="cv-desc">Gaussian Sum Filter SLAM for surgical endoscope self-calibration; C++11 / Qt / OpenGL (Boost, Eigen, OpenCV, CMake). Supervised by Prof. Dr. Daniel Cremers, TU Munich.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="cv-section">
+    <div class="cv-section-title">Education</div>
+
+    <div class="cv-entry">
+      <div class="cv-date">04/2025 – 07/2025</div>
+      <div class="cv-body">
+        <div class="cv-role">AWS Cloud Computing Bootcamp</div>
+        <div class="cv-org">neuefische GmbH · Berlin</div>
+        <div class="cv-desc">Capstone: <a href="https://github.com/slgao/AWS-Pedestrian-Detection-System" target="_blank" rel="noopener">N-Tier Pedestrian Detection System</a>.
+          <ul>
+            <li>Event-driven N-tier AWS architecture: EC2 Auto Scaling + ALB, Flask REST API (Nginx), serverless pipeline (S3 → SNS → Lambda → Rekognition), RDS MySQL Multi-AZ, CloudFront HTTPS.</li>
+            <li>Full infrastructure provisioned with <strong>Terraform IaC</strong>; IAM least-privilege, bastion host, CloudWatch monitoring.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">10/2011 – 06/2014</div>
+      <div class="cv-body">
+        <div class="cv-role">M.Sc. Computational Science &amp; Engineering</div>
+        <div class="cv-org">Technical University of Munich (TUM)</div>
+        <div class="cv-desc">Focus: HPC, Parallel Programming (MPI, CUDA), Algorithms, Computer Vision, CFD.</div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">08/2010 – 07/2011</div>
+      <div class="cv-body">
+        <div class="cv-role">M.Eng. Mechatronics</div>
+        <div class="cv-org">Xidian University · Xi'an, China</div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">08/2006 – 07/2010</div>
+      <div class="cv-body">
+        <div class="cv-role">B.Eng. Mechatronics</div>
+        <div class="cv-org">Xidian University · Xi'an, China</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="cv-section">
+    <div class="cv-section-title">Certifications</div>
+    <div>
+      <div class="cert-row">
+        <div>
+          <div class="cert-name">AWS Certified Cloud Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services · Feb 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.credly.com/badges/a331b09e-16bd-471c-bede-47b0d6db68cb/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div class="cert-name">AWS re/Start Graduate</div>
+          <div class="cert-issuer">Amazon Web Services · Jul 2025</div>
+        </div>
+        <a class="cert-link" href="https://www.credly.com/badges/1e57e6d6-acea-4c1f-8875-74ba634becdd/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="cv-section">
+    <div class="cv-section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Container &amp; DevOps</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span><span class="skill-tag">Docker Compose</span><span class="skill-tag">Terraform</span><span class="skill-tag">Jenkins</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">Linux</span><span class="skill-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud</span>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS EC2</span><span class="skill-tag">S3</span><span class="skill-tag">Lambda</span><span class="skill-tag">RDS</span><span class="skill-tag">SNS</span><span class="skill-tag">CloudFront</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">Auto Scaling</span><span class="skill-tag">Azure ML Studio</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Data &amp; Messaging</span>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MS SQL Server</span><span class="skill-tag">SQLite</span><span class="skill-tag">MySQL</span><span class="skill-tag">RabbitMQ</span><span class="skill-tag">HDF5</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Backend &amp; APIs</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">REST API</span><span class="skill-tag">C++17</span><span class="skill-tag">Cython</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">ML / AI</span>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span><span class="skill-tag">YOLOv8/v5</span><span class="skill-tag">TensorRT</span><span class="skill-tag">CUDA</span><span class="skill-tag">MLflow</span><span class="skill-tag">scikit-learn</span><span class="skill-tag">OpenCV</span><span class="skill-tag">LLM (Groq, LLaMA 3)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="cv-section">
+    <div class="cv-section-title">Languages</div>
+    <div>
+      <div class="lang-row">
+        <div>
+          <div class="lang-name-text">English</div>
+          <div class="lang-cert-text">Cambridge BEC Higher</div>
+        </div>
+        <span class="lang-badge lang-c2">C2 · Proficient</span>
+      </div>
+      <div class="lang-row">
+        <div>
+          <div class="lang-name-text">German</div>
+          <div class="lang-cert-text">Professional working proficiency</div>
+        </div>
+        <span class="lang-badge lang-c1">C1 · Advanced</span>
+      </div>
+      <div class="lang-row">
+        <div>
+          <div class="lang-name-text">Chinese (Mandarin)</div>
+        </div>
+        <span class="lang-badge lang-native">Native</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="cv-section">
+    <div class="cv-section-title">Publications &amp; Conferences</div>
+    <div>
+      <div class="pub-row">
+        <div class="pub-title-text">
+          <a href="https://www.researchgate.net/publication/324703840_Use_of_Combined_Railway_Inspection_Data_Sources_for_Characterization_of_Rolling_Contact_Fatigue" target="_blank" rel="noopener">
+            Use of Combined Railway Inspection Data Sources for Characterization of Rolling Contact Fatigue ↗
+          </a>
+        </div>
+        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 12th European Conference on Non-Destructive Testing (ECNDT) &nbsp;·&nbsp; Gothenburg, Jun 2018 &nbsp;·&nbsp; First author</div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-title-text">
+          <a href="https://www.researchgate.net/publication/301647279_Combination_of_Ultrasonic_and_Eddy_Current_Testing_with_Imaging_for_Characterization_of_Rolling_Contact_Fatigue" target="_blank" rel="noopener">
+            Combination of Ultrasonic and Eddy Current Testing with Imaging for Characterization of Rolling Contact Fatigue ↗
+          </a>
+        </div>
+        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; 19th World Conference on Non-Destructive Testing (WCNDT) &nbsp;·&nbsp; Munich, Jun 2016</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
