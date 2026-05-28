@@ -230,6 +230,13 @@
     .pub-item:first-child { border-top: 1px solid var(--border); }
     .pub-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
     .pub-meta { font-size: 12.5px; color: var(--soft); }
+    .cert-item { padding: 1.4rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .cert-item:first-child { border-top: 1px solid var(--border); }
+    .cert-body { flex: 1; }
+    .cert-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+    .cert-meta { font-size: 12.5px; color: var(--soft); }
+    .cert-badge { font-size: 11px; font-family: var(--mono); color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0.25rem 0.6rem; white-space: nowrap; text-decoration: none; transition: background .2s; }
+    .cert-badge:hover { background: rgba(99,102,241,.12); }
     .pub-first {
       font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
       text-transform: uppercase; color: #34d399; margin-left: 0.6rem;
@@ -313,6 +320,7 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
     <a href="#connect">Contact</a>
   </div>
 </nav>
@@ -494,6 +502,30 @@
       <div class="pub-item">
         <div class="pub-title">Cross-sensor data fusion for rail surface analysis</div>
         <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; WCNDT 2016 — World Conference on Non-Destructive Testing</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap fade">
+    <p class="section-label">Certifications</p>
+    <div>
+      <div class="cert-item">
+        <div class="cert-body">
+          <div class="cert-title">AWS Certified Cloud Practitioner</div>
+          <div class="cert-meta">Amazon Web Services &nbsp;·&nbsp; Feb 2026</div>
+        </div>
+        <a class="cert-badge" href="https://www.credly.com/badges/a331b09e-16bd-471c-bede-47b0d6db68cb/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+      <div class="cert-item">
+        <div class="cert-body">
+          <div class="cert-title">AWS re/Start Graduate</div>
+          <div class="cert-meta">Amazon Web Services &nbsp;·&nbsp; Jul 2025</div>
+        </div>
+        <a class="cert-badge" href="https://www.credly.com/badges/1e57e6d6-acea-4c1f-8875-74ba634becdd/public_url" target="_blank" rel="noopener">Verify ↗</a>
       </div>
     </div>
   </div>
