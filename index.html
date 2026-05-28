@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shulin Gao — AI & Data Engineer · Berlin</title>
+  <meta name="description" content="Shulin Gao — AI & Data Engineer in Berlin. 10+ years production ML/DL on multi-sensor vision data. LLM systems, agentic pipelines, cloud-native data engineering. M.Sc. TU Munich." />
+  <meta name="keywords" content="Shulin Gao, AI Engineer Berlin, Data Engineer Berlin, LLM, machine learning, deep learning, PyTorch, CUDA, AWS, Python, computer vision, agentic AI" />
+  <link rel="canonical" href="https://shulingao.dev" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shulingao.dev" />
+  <meta property="og:title" content="Shulin Gao — AI & Data Engineer · Berlin" />
+  <meta property="og:description" content="10+ years production ML/DL · LLM systems · Data engineering · AWS · M.Sc. TU Munich" />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shulin Gao",
+    "jobTitle": "AI & Data Engineer",
+    "url": "https://shulingao.dev",
+    "email": "svenslgao@gmail.com",
+    "sameAs": ["https://linkedin.com/in/shulin-gao", "https://github.com/slgao"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Technische Universität München" },
+    "knowsAbout": ["Machine Learning","Deep Learning","LLM","Data Engineering","Computer Vision","AWS","Python","CUDA","PyTorch"]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f4f0;
+      --ink: #111111;
+      --mid: #444444;
+      --soft: #888888;
+      --rule: #dddbd5;
+      --accent: #1a56db;
+      --max: 780px;
+      --mono: "SFMono-Regular", "Menlo", "Consolas", monospace;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 52px;
+      background: rgba(245, 244, 240, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 13px; color: var(--soft);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── LAYOUT ────────────────────────────────────────── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--soft);
+      margin-bottom: 2.5rem;
+    }
+
+    hr.rule {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    #hero {
+      padding-top: 9rem; padding-bottom: 5rem;
+    }
+    .hero-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--rule);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-name span {
+      background: linear-gradient(90deg, var(--ink) 60%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+    .hero-loc {
+      font-size: 13px; color: var(--soft);
+      font-family: var(--mono);
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 1.25rem; border-radius: 6px;
+      font-size: 13px; font-weight: 500;
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
+    .btn-solid { background: var(--ink); color: var(--bg); }
+    .btn-ghost {
+      background: transparent; color: var(--mid);
+      border: 1px solid var(--rule);
+    }
+    .btn-ghost:hover { border-color: #bbb; color: var(--ink); }
+
+    /* ── ABOUT ─────────────────────────────────────────── */
+    .about-body {
+      font-size: 1.05rem; color: var(--mid);
+      max-width: 640px; line-height: 1.8;
+    }
+    .about-body p + p { margin-top: 1.1rem; }
+    .about-body strong { color: var(--ink); font-weight: 600; }
+    .open-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.8rem;
+      font-size: 13px; color: var(--accent);
+      border: 1px solid rgba(26,86,219,.25);
+      border-radius: 99px; padding: 0.3rem 0.9rem;
+    }
+    .open-pill::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+
+    /* ── SKILLS ────────────────────────────────────────── */
+    .skill-rows { display: flex; flex-direction: column; gap: 1rem; }
+    .skill-row { display: flex; gap: 1.5rem; align-items: baseline; flex-wrap: wrap; }
+    .skill-cat {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--soft);
+      min-width: 90px; flex-shrink: 0;
+    }
+    .skill-list {
+      font-size: 14px; color: var(--mid); line-height: 1.9;
+    }
+    .skill-list span { margin-right: 0.2rem; }
+    .skill-list span::after { content: " ·"; color: var(--rule); }
+    .skill-list span:last-child::after { content: ""; }
+
+    /* ── PROJECTS ──────────────────────────────────────── */
+    .project-list { display: flex; flex-direction: column; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 0.5rem 1.5rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background .15s;
+      cursor: pointer;
+    }
+    .project-item:first-child { border-top: 1px solid var(--rule); }
+    .project-item:hover .project-name { color: var(--accent); }
+    .project-item:hover .project-arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .project-name {
+      font-size: 1rem; font-weight: 600;
+      transition: color .15s; margin-bottom: 0.3rem;
+    }
+    .project-desc { font-size: 14px; color: var(--mid); line-height: 1.6; }
+    .project-tech {
+      font-size: 11px; font-family: var(--mono);
+      color: var(--soft); margin-top: 0.5rem;
+    }
+    .project-arrow {
+      font-size: 1.1rem; color: var(--soft);
+      transition: transform .2s, color .15s;
+      padding-top: 2px;
+    }
+
+    /* ── PUBLICATIONS ──────────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-item {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub-item:first-child { border-top: 1px solid var(--rule); }
+    .pub-title { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+    .pub-meta { font-size: 13px; color: var(--soft); }
+    .pub-first {
+      display: inline; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: #059669; margin-left: 0.5rem;
+    }
+
+    /* ── LANGUAGES ─────────────────────────────────────── */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 520px;
+    }
+    .lang-item {
+      background: var(--bg);
+      padding: 1.2rem 1.4rem;
+    }
+    .lang-flag { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .lang-name { font-size: 14px; font-weight: 600; margin-bottom: 0.15rem; }
+    .lang-level { font-size: 12px; color: var(--soft); }
+    .lang-cert { font-size: 11px; color: var(--accent); margin-top: 0.15rem; font-family: var(--mono); }
+
+    /* ── CONNECT ───────────────────────────────────────── */
+    .connect-list { display: flex; flex-direction: column; gap: 0; }
+    .connect-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--mid); font-size: 14px;
+      transition: color .15s;
+    }
+    .connect-item:first-child { border-top: 1px solid var(--rule); }
+    .connect-item:hover { color: var(--ink); }
+    .connect-item:hover .connect-arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .connect-label { font-weight: 500; color: var(--ink); font-size: 14px; }
+    .connect-value { font-family: var(--mono); font-size: 13px; }
+    .connect-arrow {
+      font-size: 1rem; color: var(--soft);
+      transition: transform .2s, color .15s;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: var(--soft);
+    }
+
+    /* ── FADE-IN ───────────────────────────────────────── */
+    .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .fade.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      .wrap { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .lang-grid { grid-template-columns: 1fr; max-width: 100%; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Shulin Gao</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#connect">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <img class="hero-avatar" src="https://github.com/slgao.png" alt="Shulin Gao" />
+    <h1 class="hero-name"><span>Shulin Gao</span></h1>
+    <p class="hero-sub">AI &amp; Data Engineer &nbsp;—&nbsp; LLM Systems &amp; Cloud</p>
+    <p class="hero-loc">Berlin, Germany</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="https://github.com/slgao" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/shulin-gao" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:svenslgao@gmail.com">Email</a>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap fade">
+    <p class="section-label">About</p>
+    <div class="about-body">
+      <p>
+        I spent <strong>10 years</strong> building production deep learning systems at
+        Eurailscout — national-scale railway inspection across optical, ultrasound,
+        and eddy-current sensors. Published researcher at ECNDT 2018 (first author)
+        and WCNDT 2016. M.Sc. Computational Science &amp; Engineering from
+        <strong>TU Munich</strong>.
+      </p>
+      <p>
+        Now focused on <strong>agentic LLM systems</strong> and cloud-native
+        data engineering — bridging foundation models with real-world data pipelines.
+        I build end-to-end: from multi-sensor data infrastructure through model
+        training to production deployment on AWS.
+      </p>
+      <div>
+        <span class="open-pill">Open to AI Engineer &amp; Data Engineer roles in Berlin</span>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap fade">
+    <p class="section-label">Skills &amp; Stack</p>
+    <div class="skill-rows">
+      <div class="skill-row">
+        <span class="skill-cat">LLM / Agents</span>
+        <div class="skill-list">
+          <span>LLM</span><span>RAG</span><span>Multi-agent</span>
+          <span>Groq</span><span>HuggingFace</span><span>LangChain</span><span>FastAPI</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Cloud</span>
+        <div class="skill-list">
+          <span>AWS</span><span>S3</span><span>Lambda</span><span>RDS</span>
+          <span>SNS</span><span>EC2</span><span>Oracle Cloud</span>
+          <span>Terraform</span><span>Docker</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Data</span>
+        <div class="skill-list">
+          <span>PostgreSQL</span><span>MongoDB</span><span>MS SQL Server</span>
+          <span>RabbitMQ</span><span>Pandas</span><span>NumPy</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">ML / Vision</span>
+        <div class="skill-list">
+          <span>PyTorch</span><span>CUDA</span><span>TensorRT</span>
+          <span>OpenCV</span><span>scikit-learn</span><span>MLflow</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Languages</span>
+        <div class="skill-list">
+          <span>Python</span><span>C++</span><span>C</span><span>SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap fade">
+    <p class="section-label">Projects</p>
+    <div class="project-list">
+
+      <a class="project-item" href="https://slgao.github.io/iHunter/" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">iHunter</div>
+          <div class="project-desc">Agentic LLM platform for B2B lead discovery — multi-agent orchestration, automated data enrichment and quality assessment via LLaMA 3 on Groq.</div>
+          <div class="project-tech">Python · Groq · LLaMA 3 · FastAPI · aiosqlite</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a class="project-item" href="https://slgao.github.io/landlord_system/" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">Landlord System</div>
+          <div class="project-desc">Property management for German landlords — rent tracking, utility billing, and automated PDF generation.</div>
+          <div class="project-tech">Python · PostgreSQL · FastAPI</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a class="project-item" href="https://github.com/slgao/AWS-Pedestrian-Detection-System" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">AWS Pedestrian Detection</div>
+          <div class="project-desc">Event-driven ML pipeline — S3 → SNS → Lambda → RDS with Terraform IaC. AWS Cloud Computing Bootcamp capstone.</div>
+          <div class="project-tech">AWS · Lambda · S3 · RDS · Terraform · Python</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a class="project-item" href="https://github.com/slgao/MonoSLAMAutoCalibration" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">MonoSLAM Auto-Calibration</div>
+          <div class="project-desc">M.Sc. thesis — online intrinsic calibration for surgical endoscopes using a Gaussian Sum Filter in a monocular SLAM pipeline. Based on Civera et al., IEEE T-RO 2008.</div>
+          <div class="project-tech">C++ · OpenCV · Eigen · Kalman Filter</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a class="project-item" href="https://github.com/slgao/kleinanzeigen-scraper" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">Kleinanzeigen Scraper</div>
+          <div class="project-desc">Full-stack scraper with browser UI for triggering scrapes, browsing results, and analysing price and location data from kleinanzeigen.de.</div>
+          <div class="project-tech">Python · FastAPI · PostgreSQL</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap fade">
+    <p class="section-label">Publications</p>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-title">
+          Multi-modal sensor fusion for automated railway defect classification
+          <span class="pub-first">First author</span>
+        </div>
+        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; ECNDT 2018 — European Conference on Non-Destructive Testing</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-title">Cross-sensor data fusion for rail surface analysis</div>
+        <div class="pub-meta">S. Gao et al. &nbsp;·&nbsp; WCNDT 2016 — World Conference on Non-Destructive Testing</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="wrap fade">
+    <p class="section-label">Languages</p>
+    <div class="lang-grid">
+      <div class="lang-item">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">C2 Proficient</div>
+        <div class="lang-cert">Cambridge BEC Higher</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇩🇪</div>
+        <div class="lang-name">German</div>
+        <div class="lang-level">C1 Advanced</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇨🇳</div>
+        <div class="lang-name">Chinese</div>
+        <div class="lang-level">Native (Mandarin)</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule" />
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="wrap fade">
+    <p class="section-label">Contact</p>
+    <div class="connect-list">
+      <a class="connect-item" href="mailto:svenslgao@gmail.com">
+        <div>
+          <div class="connect-label">Email</div>
+          <div class="connect-value">svenslgao@gmail.com</div>
+        </div>
+        <span class="connect-arrow">↗</span>
+      </a>
+      <a class="connect-item" href="https://linkedin.com/in/shulin-gao" target="_blank" rel="noopener">
+        <div>
+          <div class="connect-label">LinkedIn</div>
+          <div class="connect-value">linkedin.com/in/shulin-gao</div>
+        </div>
+        <span class="connect-arrow">↗</span>
+      </a>
+      <a class="connect-item" href="https://github.com/slgao" target="_blank" rel="noopener">
+        <div>
+          <div class="connect-label">GitHub</div>
+          <div class="connect-value">github.com/slgao</div>
+        </div>
+        <span class="connect-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>© 2026 Shulin Gao</span>
+      <span>Berlin, Germany</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const fades = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  fades.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
