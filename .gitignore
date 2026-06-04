@@ -1,0 +1,8 @@
+# Private location data — personal city-level footprints. Never publish.
+# The public footprints.html only contains aggregated per-country counts.
+citylist.md
+footprints-cities.private.json
+*.private.json
+
+# Editor backups
+*.~undo-tree~
