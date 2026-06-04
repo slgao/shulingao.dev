@@ -6,3 +6,10 @@ footprints-cities.private.json
 
 # Editor backups
 *.~undo-tree~
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
